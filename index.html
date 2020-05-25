@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+
+</head>
+<body>
+    <p style="font-size: 25px; color: red">Choose options. You can choose only <b>once!</b></p><Br>
+        <p>
+        <input type="checkbox" class="check" id="one"> не звонить мне<Br>
+        <input type="checkbox" class="check" id="two"> я прочитал и согласен с правилами пользования сервисом<Br>
+        <input type="checkbox" class="check" id="three"> я не выбираю эту галочку<Br>
+        <input type="checkbox" class="check" id="four"> я подтверждаю, что свобода в интернете — это возможность выбирать галочки<Br>
+        <input type="checkbox" class="check" id="five"> мне больше 12 лет<Br>
+        <input type="checkbox" class="check" id="six"> это задание выполнено правильно<Br>
+       </p>
+
+    <script>
+
+    boxes = document.querySelectorAll('.check');
+
+    function chooseElement(element) {
+        if(document.getElementById(element.target.id).checked) {
+        localStorage.setItem(element.target.id, "true");
+        } 
+        else {
+            localStorage.setItem(element.target.id, "false");
+        }
+    }
+
+    boxes.forEach(element => element.onclick = chooseElement);
+
+    boxes.forEach(element => {
+        if (localStorage.getItem(element.id) == "true") {
+      document.getElementById(element.id).setAttribute('checked','checked');
+      $(".check").attr("disabled", "disabled")
+    }
+    })
+    </script>
+</body>
+</html>
